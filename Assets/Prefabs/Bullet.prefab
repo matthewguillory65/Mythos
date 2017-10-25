@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23582562764845638}
   - component: {fileID: 50838889006803488}
   - component: {fileID: 58466929826801652}
+  - component: {fileID: 114953948739024962}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -148,6 +149,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &114953948739024962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653175335763448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e504a2aeca5d04a84f10e03e1e3f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trail: {fileID: 198497393512459994}
 --- !u!198 &198497393512459994
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -206,7 +219,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 1
+  scalingMode: 0
   randomSeed: 276131058
   InitialModule:
     serializedVersion: 3
@@ -255,7 +268,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -359,7 +372,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.6
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1389,7 +1402,7 @@ ParticleSystem:
     inWorldSpace: 0
   InheritVelocityModule:
     enabled: 0
-    m_Mode: 0
+    m_Mode: 1
     m_Curve:
       serializedVersion: 2
       minMaxState: 0
@@ -2732,7 +2745,7 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 0
+    enabled: 1
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -3425,7 +3438,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
