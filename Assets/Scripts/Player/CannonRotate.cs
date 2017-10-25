@@ -19,5 +19,7 @@ public class CannonRotate : MonoBehaviour {
 	void Update ()
     {
         cannon.Rotate(new Vector3(0, 0,-Input.GetAxis("Horizontal")*rotateSpeed));
+        if (cannon.localRotation.eulerAngles.z > 160 || cannon.localRotation.eulerAngles.z < 20)
+            cannon.Rotate(new Vector3(0,0,Input.GetAxis("Horizontal") * rotateSpeed));
     }
 }
