@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CannonBallSpeed : MonoBehaviour {
+    
 
-	// Use this for initialization
+
 	void Start () {
 		
 	}
