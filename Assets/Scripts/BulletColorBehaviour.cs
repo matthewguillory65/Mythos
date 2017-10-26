@@ -14,8 +14,6 @@ public class BulletColorBehaviour : MonoBehaviour {
 
     void setColor()
     {
-        colorType = Random.RandomRange(0, 3);
-
         switch(colorType)
         {
             case 0:
