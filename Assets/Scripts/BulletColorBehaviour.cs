@@ -9,6 +9,7 @@ public class BulletColorBehaviour : MonoBehaviour {
     public ParticleSystem trailParticle;
     public ParticleSystem explode;
     public GameObject pointLight;
+    public float timeUntilDestroy;
 
     private Collider2D thisCollider;
 
@@ -39,7 +40,12 @@ public class BulletColorBehaviour : MonoBehaviour {
     {
         thisCollider = GetComponentInChildren<Collider2D>();
         setColor();
-	}
+
+        StartCoroutine(bulletTimeDeath());
+        Destroy(bullet, timeUntilDestroy);
+        Destroy(pointLight, timeUntilDestroy);
+        Destroy(gameObject, timeUntilDestroy + 1);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -48,7 +54,7 @@ public class BulletColorBehaviour : MonoBehaviour {
 
     void explodeBullet()
     {
-        gameObject.GetComponent<BulletParticleSystem>().trail.emissionRate = 0;
+        gameObject.GetComponent<BulletColorBehaviour>().trailParticle.emissionRate = 0;
         Destroy(bullet);
         Destroy(gameObject, 1);
         explode.transform.parent = null;
@@ -59,8 +65,6 @@ public class BulletColorBehaviour : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collided!");
-
         if (collision.gameObject.GetComponent<EnemyColorBehaviour>())
             if (collision.gameObject.GetComponent<EnemyColorBehaviour>().colorType == colorType)
             {
@@ -71,5 +75,11 @@ public class BulletColorBehaviour : MonoBehaviour {
             {
                 explodeBullet();
             }
+    }
+
+    IEnumerator bulletTimeDeath()
+    {
+        yield return new WaitForSeconds(timeUntilDestroy);
+        explodeBullet();
     }
 }
