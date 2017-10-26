@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02b9fb4439f6e04c822d3d4eb1073e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1653175335763448, guid: 176285febbea5c14394627141a0549c7,
+  bulletPrefab: {fileID: 1038854669216928, guid: 2539b774c9613df47a9d2c80bbbb951d,
     type: 2}
   bulletSpeed: 250
   bulletDestroyTime: 5
@@ -635,6 +635,7 @@ GameObject:
   - component: {fileID: 1894857922}
   - component: {fileID: 1894857920}
   - component: {fileID: 1894857921}
+  - component: {fileID: 1894857924}
   m_Layer: 0
   m_Name: RWall
   m_TagString: Untagged
@@ -719,3 +720,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1894857924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1894857919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4193bdbe9f6b75c4fae74e1d3e4e5c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 0

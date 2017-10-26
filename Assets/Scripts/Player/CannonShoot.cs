@@ -16,7 +16,6 @@ public class CannonShoot : MonoBehaviour
         Clone.GetComponent<Transform>().parent = null;
         Clone.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(0, bulletSpeed, 0));
         Debug.Log("Bullet has been found");
-        StartCoroutine(DestroyBullet(Clone));
     }
 
 	void Update ()
@@ -24,10 +23,4 @@ public class CannonShoot : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
             OnShoot();
 	}
-
-    IEnumerator DestroyBullet(Object bullet)
-    {
-        yield return new WaitForSecondsRealtime(bulletDestroyTime);
-        Destroy(bullet);
-    }
 }
