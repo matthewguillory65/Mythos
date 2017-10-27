@@ -9,7 +9,9 @@ public class EnemyColorBehaviour : MonoBehaviour {
     public GameObject Phys;
     public ParticleSystem trailParticle;
     public ParticleSystem explode;
-    public Light pointLight;
+    public GameObject pointLight;
+
+    public float startSpeed;
 
 	// Use this for initialization
 	void Start ()
@@ -34,10 +36,13 @@ public class EnemyColorBehaviour : MonoBehaviour {
                 trailParticle.startColor = new Color(0.3f, 0.8f, 1);
                 break;
         }
+
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, -startSpeed);
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
@@ -55,7 +60,20 @@ public class EnemyColorBehaviour : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -startSpeed);
             if (collision.gameObject.GetComponent<BulletColorBehaviour>().colorType == colorType)
-                Destroy(gameObject);
+            {
+                death();
+                GameObject.Find("GameManager").GetComponent<ScoreKeeper>().scoreUp(100*collision.gameObject.GetComponent<BulletColorBehaviour>().mult);
+            }
+            else
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, -startSpeed * 1.5f);
+        }
+        if (collision.gameObject.tag == "Back")
+        {
+            death();
+            GameObject.Find("GameManager").GetComponent<ScoreKeeper>().healthDown(10);
+        }
     }
 }
