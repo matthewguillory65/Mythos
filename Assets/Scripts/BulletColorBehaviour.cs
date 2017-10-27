@@ -54,7 +54,7 @@ public class BulletColorBehaviour : MonoBehaviour {
 
     void explodeBullet()
     {
-        gameObject.GetComponent<BulletColorBehaviour>().trailParticle.emissionRate = 0;
+        trailParticle.emissionRate = 0;
         Destroy(bullet);
         Destroy(gameObject, 1);
         explode.transform.parent = null;
@@ -65,16 +65,8 @@ public class BulletColorBehaviour : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<EnemyColorBehaviour>())
-            if (collision.gameObject.GetComponent<EnemyColorBehaviour>().colorType == colorType)
-            {
-                Destroy(collision.gameObject);
-                explodeBullet();
-            }
-        if (collision.gameObject.tag == "Back")
-            {
-                explodeBullet();
-            }
+        if (collision.gameObject.tag == "Back" || collision.gameObject.tag == "Enemy")
+            explodeBullet();
     }
 
     IEnumerator bulletTimeDeath()
