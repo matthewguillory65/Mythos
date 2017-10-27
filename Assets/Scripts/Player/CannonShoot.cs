@@ -43,7 +43,10 @@ public class CannonShoot : MonoBehaviour
             Clone.GetComponent<Transform>().parent = null;
             Clone.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(0, (float)(bulletSpeed * multiplier), 0));
 
-            colorType = Random.RandomRange(0, 3);
+            if (colorType < 2)
+                colorType++;
+            else
+                colorType = 0;
             switch (colorType)
             {
                 case 0:

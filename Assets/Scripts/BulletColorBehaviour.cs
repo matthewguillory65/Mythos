@@ -10,6 +10,7 @@ public class BulletColorBehaviour : MonoBehaviour {
     public ParticleSystem explode;
     public GameObject pointLight;
     public float timeUntilDestroy;
+    public int mult = 1;
 
     private Collider2D thisCollider;
 
@@ -67,6 +68,13 @@ public class BulletColorBehaviour : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Back" || collision.gameObject.tag == "Enemy")
             explodeBullet();
+        else
+            mult*=2;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        explodeBullet();
     }
 
     IEnumerator bulletTimeDeath()
